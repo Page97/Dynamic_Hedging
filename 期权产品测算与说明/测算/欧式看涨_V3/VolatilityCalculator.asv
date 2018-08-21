@@ -1,0 +1,10 @@
+%   该函数使用移动平均法计算给定标的资产价格的年化波动率
+
+function [volatility,currentprice]=DataFetcher(code,date,calculationtime,annualcoefficient)
+w=windmatlab;
+[volatility,~,~,~,~]=w.wsd(code,'volatilityratio',date,date,strcat('CalculationTime=',num2str(calculationtime)),strcat('AnnualCoefficient=',num2str(annualcoefficient)));
+[unitprice,~,~,~,~]=w.wsd('AU1812.SHF','open',date,date);
+[contractmultiplier,~,~,~,~]=w.wsd('AU1812.SHF','contractmultiplier',date,date);
+currentprice=unitprice*
+end
+
